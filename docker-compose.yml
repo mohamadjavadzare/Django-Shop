@@ -5,7 +5,7 @@ services:
     container_name: db
     image: postgres:15-alpine
     volumes:
-      - ./postgres/data:/var/lib/postgresql/data
+      - /postgres/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -19,18 +19,20 @@ services:
     build:
       context: .
       dockerfile: ./dockerfiles/dev/django/Dockerfile
-    volumes:
+    volumes: 
       - ./core:/usr/src/app
     working_dir: /usr/src/app
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - 8000:8000
     environment:
-      - DEBUG=TRUE
+      - DEBUG=True
+    env_file:
+      - ./envs/dev/django/.env
     restart: always
     depends_on:
       - db
-
+      
   smtp4dev:
     image: rnwood/smtp4dev:v3
     restart: always
@@ -41,7 +43,6 @@ services:
     volumes:
         - smtp4dev-data:/smtp4dev
     environment:
-      - ServerOptions__Urls=http://*:80
       - ServerOptions__HostName=smtp4dev
 
 volumes:
