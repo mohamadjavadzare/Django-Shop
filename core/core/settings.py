@@ -168,11 +168,38 @@ if SHOW_DEBUGGER_TOOLBAR:
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
     
-# # accounts model settings
-# AUTH_USER_MODEL = 'accounts.User'
-# LOGIN_REDIRECT_URL = '/'
-# LOGOUT_REDIRECT_URL= '/'
+# accounts model settings
+AUTH_USER_MODEL = 'accounts.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL= '/'
 
-# # payment gateway settings
-# MERCHANT_ID = config("MERCHANT_ID",default="4ced0a1e-4ad8-4309-9668-3ea3ae8e8897")
-# SANDBOX_MODE = config("SANDBOX_MODE", cast=bool, default=True)
+# payment gateway settings
+MERCHANT_ID = config("MERCHANT_ID",default="4ced0a1e-4ad8-4309-9668-3ea3ae8e8897")
+SANDBOX_MODE = config("SANDBOX_MODE", cast=bool, default=True)
+
+
+# reset password settings
+from datetime import timedelta
+
+PASSWORD_RESET_TIMEOUT = timedelta(hours=48).total_seconds()
+
+
+# redis and celery settings
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'  # اگر از Redis استفاده می‌کنید
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+# celery configs
+CELERY_BROKER_URL = "redis://redis:6379/1"
+
+# caching configs
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/2",
+        # "TIMEOUT": 300, BY DEFAULT IS 5 MINUTES
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
+}
