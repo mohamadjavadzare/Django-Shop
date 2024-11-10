@@ -7,9 +7,11 @@ python-decouple==3.8
 sqlparse==0.5.1
 typing_extensions==4.12.2
 Pillow
+django-ckeditor
 
 # background process and cache
 redis
 celery==5.3.4
 django-redis
 requests
+
