@@ -28,7 +28,7 @@ class ProductModel(models.Model):
     category = models.ManyToManyField(ProductCategoryModel)
     title = models.CharField(max_length=255)
     slug = models.SlugField(allow_unicode=True,unique=True)
-    image = models.ImageField(default="/default/product-image.png",upload_to="product/img/")
+    image = models.ImageField(default="default/product-image.png",upload_to="product/img/")
     description = RichTextField()
     brief_description = models.TextField(null=True,blank=True)
     
