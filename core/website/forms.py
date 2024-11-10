@@ -39,3 +39,6 @@ class NewsLetterForm(forms.ModelForm):
     def save(self, commit=True):
         newsletter, created = NewsLetter.objects.get_or_create(email=self.cleaned_data.get("email"))
         return newsletter
+    
+
+    
