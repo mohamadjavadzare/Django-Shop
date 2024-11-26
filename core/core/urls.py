@@ -31,6 +31,7 @@ urlpatterns = [
     path('order/', include('order.urls')),
     path('payment/', include('payment.urls')),
     path('review/', include('review.urls')),
+    path('tinymce/', include('tinymce.urls')),
     
 ]
 

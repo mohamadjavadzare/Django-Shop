@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # "ckeditor",  # CKEditor config
+    # "ckeditor_uploader",  # CKEditor media uploader
+    'tinymce',
+
     'website',
     'dashboard',
     'accounts',
@@ -48,27 +52,35 @@ INSTALLED_APPS = [
     'payment',
     'review',
     
-    "ckeditor",  # CKEditor config
-    "ckeditor_uploader",  # CKEditor media uploader
+
 ]
 
 
 # CKEditor
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_JQUERY_URL = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
-CKEDITOR_CONFIGS = {
-    "default": {
-        "toolbar": "full",
-        "width": "auto",
-        "extraPlugins": ",".join(
-            [
-                "codesnippet",
-            ]
-        ),
-    },
+# CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+# CKEDITOR_UPLOAD_PATH = "uploads/"
+# CKEDITOR_IMAGE_BACKEND = "pillow"
+# CKEDITOR_JQUERY_URL = "//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
+# CKEDITOR_CONFIGS = {
+#     "default": {
+#         "toolbar": "full",
+#         "width": "auto",
+#         "extraPlugins": ",".join(
+#             [
+#                 "codesnippet",
+#             ]
+#         ),
+#     },
+# }
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 360,
+    'width': 800,
+    'menubar': 'file edit view insert format tools table help',
+    'plugins': 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    'toolbar': 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
 }
+
 
 
 MIDDLEWARE = [
