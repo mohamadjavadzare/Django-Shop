@@ -26,7 +26,7 @@ SECRET_KEY = config("SECRET_KEY",default='django-insecure-zj$bs+^(hqc_10h44nu)+x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG",cast=bool,default=True)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast= lambda v: [item.strip() for item in v.split(',')] ,default="*")
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast= lambda v: [item.strip() for item in v.split(',')] ,default="mmd-javad.liara.run,127.0.0.1")
 
 
 # Application definition
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'order',
     'payment',
     'review',
-    
+
     'tinymce',
 
 ]
