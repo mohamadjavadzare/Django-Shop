@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     # "ckeditor",  # CKEditor config
     # "ckeditor_uploader",  # CKEditor media uploader
-    'tinymce',
+
 
     'website',
     'dashboard',
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'payment',
     'review',
     
+    'tinymce',
 
 ]
 
