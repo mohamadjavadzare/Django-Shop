@@ -9,7 +9,8 @@ def get_domain():
         from django.contrib.sites.models import Site
         return Site.objects.get_current().domain
     except:
-        return "example.com"
+        return "185.231.181.227"
+        # return "example.com"
 
 
 def get_protocol():
